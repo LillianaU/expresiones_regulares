@@ -9,8 +9,8 @@ git clone https://github.com/LillianaU/tallerAlertasJs.git
 ### ✨ abrir mi  usuario en este pc 🎞 ###
 
 ´´´´
-git config --global user.name "lillianau"
-git config --global user.email "lillianauribe@gmail.com"
+git config --global user.name "miusuario"
+git config --global user.email "micorreo@gmail.com"
 
 
 ´´´´
@@ -61,11 +61,11 @@ git push -u origin main
  ´´´´
  pasopasogit.md
  ´´´´
- por utimo crear el commit
+## por utimo crear el commit
  ´´´´
  git commit -m " complemente el  tutorial de git"
  ´´´´
-ahora suba
+## ahora suba
 ´´´´
 git push -u origin main
 ´´´´
@@ -78,3 +78,8 @@ La forma segura (Recomendada): Mezcla los cambios remotos con los tuyos antes de
 
 git pull origin main --rebase
 git push -u origin main
+
+### 1. Traer los cambios de GitHub a tu PC
+Ejecuta este comando para descargar lo que está en la nube y mezclarlo con tu trabajo:
+bash
+git pull origin main --allow-unrelated-histories
