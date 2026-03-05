@@ -116,6 +116,45 @@
         de la barra de progreso y uso de SweetAlert2.
     -->
     <script>
+        const form = document.getElementById('registrationForm');
+        const inputs = {
+            nombre: document.getElementById('nombre'),
+            primerApellido: document.getElementById('primerApellido'),
+            segundoApellido: document.getElementById('segundoApellido'),
+            email: document.getElementById('email'),
+            fechaNacimiento: document.getElementById('fechaNacimiento'),
+            clave: document.getElementById('clave'),
+            foto: document.getElementById('foto')
+        };
+        const progressBar = document.getElementById('progressBar');
+        const TOTAL_CAMPOS = 7; // Número total de campos a validar para la barra de progreso
+        // Expresiones regulares para validación nombres y apellidos
+        const regexNombreApellido = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{2,50}$/;// Letras (mayúsculas y minúsculas), tildes, ñ, espacios, longitud 2-50
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;// Formato básico de email (una @, sin espacios, con un dominio)
+        const regexFechaNacimiento = /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;// Formato de fecha: YYYY-MM-DD
+        const regexClave = /^(?=(.*[A-Z]){1,})(?=(.*[A-Za-z]){3,})(?=(.*\d){5,})(?=(.*[!@#$%^&*]){2,}).{11,}$/;// Al menos 1 mayúscula, 3 letras en total, 5 números, 2 caracteres especiales, longitud mínima 11   
+        // las funciones donde cada configuracion de expresion regular va tener sentido
+        function esNombreApellidoValido(valor){
+            return regexNombreApellido.test(valor).trim();// Retorna true si el valor cumple con la expresión regular, false en caso contrario
+        }
+        function esEmailValido(valor){
+            return regexEmail.test(valor.trim());// Retorna true si el valor cumple con la expresión regular, false en caso contrario
+        }
+        //clave
+        function esClaveValida(valor){
+            return regexClave.test(valor.trim());// Retorna true si el valor cumple con la expresión regular, false en caso contrario
+        }
+        //fecha de nacimiento
+        function esFechaValida(fecha){
+            return regexFechaNacimiento.test(fecha.trim());// Retorna true si el valor cumple con la expresión regular, false en caso contrario
+        }
+        //foto
+        function esFotoValida(){
+            return inputs.foto.files.length > 0;// Retorna true si se ha seleccionado un archivo, false si no hay archivos seleccionados
+        }
+        //--- Actualizar barra de progreso--
+        
+
         /**
          * =========================================================================
          * DOCUMENTACIÓN DEL CÓDIGO JS PARA VALIDACIÓN DE FORMULARIO
