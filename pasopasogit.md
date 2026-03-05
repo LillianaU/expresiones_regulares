@@ -61,11 +61,11 @@ git push -u origin main
  ´´´´
  pasopasogit.md
  ´´´´
- por utimo crear el commit
+## por utimo crear el commit
  ´´´´
  git commit -m " complemente el  tutorial de git"
  ´´´´
-ahora suba
+## ahora suba
 ´´´´
 git push -u origin main
 ´´´´
