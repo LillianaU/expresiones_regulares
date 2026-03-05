@@ -9,8 +9,8 @@ git clone https://github.com/LillianaU/tallerAlertasJs.git
 ### ✨ abrir mi  usuario en este pc 🎞 ###
 
 ´´´´
-git config --global user.name "lillianau"
-git config --global user.email "lillianauribe@gmail.com"
+git config --global user.name "miusuario"
+git config --global user.email "micorreo@gmail.com"
 
 
 ´´´´
