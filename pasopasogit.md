@@ -51,10 +51,21 @@ git commit -m " estamos subiendo en index al repositorio donde esta la documenta
 git push -u origin main
 
 ´´´´
-# como hago las actualizaciones 
+# 👔como hago las actualizaciones # 
  verificar del estado  
  ´´´´
  git status
 
  ´´´´
- 
+ luego  adicionar cambios
+ ´´´´
+ pasopasogit.md
+ ´´´´
+ por utimo crear el commit
+ ´´´´
+ git commit -m " complemente el  tutorial de git"
+ ´´´´
+ahora suba
+´´´´
+git push -u origin main
+´´´´
