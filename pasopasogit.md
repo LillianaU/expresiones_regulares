@@ -69,3 +69,12 @@ ahora suba
 ´´´´
 git push -u origin main
 ´´´´
+### en caso que presente error
+se error ocurre porque el historial de tu repositorio en GitHub tiene cambios que tú no tienes en tu computadora local (por ejemplo, si creaste un README o un .gitignore desde la web). Git evita que sobrescribas esos archivos por accidente. [1, 3] 
+Para solucionarlo, tienes estas opciones:
+La forma segura (Recomendada): Mezcla los cambios remotos con los tuyos antes de subir nada.
+
+
+
+git pull origin main --rebase
+git push -u origin main
