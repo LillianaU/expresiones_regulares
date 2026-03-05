@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario +18 · Documentación JS</title>
+    <!-- Bootstrap 5 (solo CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Mínimo CSS adicional (opcional, solo para presentación) -->
+    <style>
+        body {
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card-form {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+        .progress {
+            height: 1.5rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card-form">
+                    <h2 class="text-center mb-4">Crear cuenta</h2>
+
+                    <!-- BARRA DE PROGRESO (se actualizaría con JS) -->
+                    <div class="progress mb-4" style="height: 1.5rem;">
+                        <div id="progressBar" class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                    </div>
+
+                    <!-- FORMULARIO (sin funcionalidad JS en esta versión, solo documentación) -->
+                    <form id="registrationForm" enctype="multipart/form-data" novalidate>
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre *</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ej. Carlos" required>
+                            <div class="form-text">Mínimo 2 letras, máximo 50 (solo letras y espacios).</div>
+                        </div>
+
+                        <!-- Primer apellido -->
+                        <div class="mb-3">
+                            <label for="primerApellido" class="form-label">Primer apellido *</label>
+                            <input type="text" class="form-control" id="primerApellido" placeholder="Ej. Rodríguez" required>
+                            <div class="form-text">Mínimo 2 letras, máximo 50.</div>
+                        </div>
+
+                        <!-- Segundo apellido -->
+                        <div class="mb-3">
+                            <label for="segundoApellido" class="form-label">Segundo apellido *</label>
+                            <input type="text" class="form-control" id="segundoApellido" placeholder="Ej. López" required>
+                            <div class="form-text">Mínimo 2 letras, máximo 50.</div>
+                        </div>
+
+                        <!-- Correo electrónico -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico *</label>
+                            <input type="email" class="form-control" id="email" placeholder="ejemplo@dominio.com" required>
+                            <div class="form-text">Formato de correo válido.</div>
+                        </div>
+
+                        <!-- Fecha de nacimiento -->
+                        <div class="mb-3">
+                            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento *</label>
+                            <input type="date" class="form-control" id="fechaNacimiento" required>
+                            <div class="form-text">Debes ser mayor de 18 años.</div>
+                        </div>
+
+                        <!-- Contraseña (clave) con requisitos -->
+                        <div class="mb-3">
+                            <label for="clave" class="form-label">Contraseña *</label>
+                            <input type="password" class="form-control" id="clave" placeholder="Mínimo: 1 mayúscula, 3 letras, 5 números, 2 especiales" required>
+                            <div class="form-text">
+                                Debe contener al menos: 1 mayúscula, 3 letras en total, 5 números y 2 caracteres especiales (!@#$%^&*).
+                            </div>
+                        </div>
+
+                        <!-- Foto profesional -->
+                        <div class="mb-4">
+                            <label for="foto" class="form-label">Foto profesional *</label>
+                            <input type="file" class="form-control" id="foto" accept="image/*" required>
+                            <div class="form-text" id="fotoAyuda">Selecciona una imagen (JPG, PNG, etc.)</div>
+                        </div>
+
+                        <!-- Botón de envío -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Registrarse</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts: Bootstrap JS (opcional para componentes como tooltips, no necesario para validación) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 (necesario para las alertas, pero aquí solo se comenta su uso) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- ======================================================================= -->
+    <!-- DOCUMENTACIÓN DEL CÓDIGO JAVASCRIPT QUE DEBERÍA IMPLEMENTARSE          -->
+    ======================================================================== -->
+    <!-- 
+        A continuación se describe la lógica que debe contener el archivo JavaScript
+        para que el formulario funcione con todas las validaciones solicitadas.
+        Se incluyen expresiones regulares, funciones de validación, actualización
+        de la barra de progreso y uso de SweetAlert2.
+    -->
+    <script>
+        /**
+         * =========================================================================
+         * DOCUMENTACIÓN DEL CÓDIGO JS PARA VALIDACIÓN DE FORMULARIO
+         * =========================================================================
+         * 
+         * Este bloque describe paso a paso lo que debe implementarse en JavaScript
+         * (vanilla) para lograr las siguientes funcionalidades:
+         * 
+         * 1. Validar cada campo mediante expresiones regulares.
+         * 2. Actualizar una barra de progreso según el cumplimiento de las validaciones.
+         * 3. Mostrar mensajes de error y éxito con SweetAlert2.
+         * 4. Calcular edad y asegurar que sea >= 18 años.
+         * 5. Verificar que la foto sea una imagen.
+         * 
+         * -------------------------------------------------------------------------
+         * EXPRESIONES REGULARES (ejemplos)
+         * -------------------------------------------------------------------------
+         * 
+         * - Nombre y apellidos: 
+         *   const regexNombreApellido = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{2,50}$/;
+         *   (letras, tildes, ñ, espacios, longitud 2-50)
+         * 
+         * - Email:
+         *   const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+         *   (formato básico)
+         * 
+         * - Contraseña (debe cumplir):
+         *   • Al menos 1 mayúscula.
+         *   • Al menos 3 letras (mayúsculas o minúsculas).
+         *   • Al menos 5 números.
+         *   • Al menos 2 caracteres especiales del conjunto !@#$%^&*.
+         *   • Longitud mínima total: 11 (por la suma de requisitos).
+         * 
+         *   Expresión regular combinada:
+         *   /^(?=(.*[A-Z]){1,})(?=(.*[A-Za-z]){3,})(?=(.*\d){5,})(?=(.*[!@#$%^&*]){2,}).{11,}$/
+         * 
+         * -------------------------------------------------------------------------
+         * ESTRUCTURA DEL CÓDIGO (funciones necesarias)
+         * -------------------------------------------------------------------------
+         * 
+         * 1. Obtener referencias a los elementos del DOM:
+         *    const form = document.getElementById('registrationForm');
+         *    const inputs = { nombre, primerApellido, segundoApellido, email, fechaNacimiento, clave, foto };
+         *    const progressBar = document.getElementById('progressBar');
+         * 
+         * 2. Funciones de validación individual (devuelven boolean):
+         *    - esNombreApellidoValido(valor)   -> test(regexNombreApellido)
+         *    - esEmailValido(valor)            -> test(regexEmail)
+         *    - esClaveValida(valor)            -> test(regexClave)
+         *    - esFechaValida(fecha)            -> true si no está vacía
+         *    - esFotoValida()                  -> files.length > 0
+         * 
+         * 3. Función contarCamposCompletados():
+         *    Itera sobre cada campo y suma 1 si su validación individual es true.
+         *    Retorna el total (máximo 7).
+         * 
+         * 4. Función actualizarBarraProgreso():
+         *    const completados = contarCamposCompletados();
+         *    const porcentaje = (completados / 7) * 100;
+         *    progressBar.style.width = porcentaje + '%';
+         *    progressBar.textContent = porcentaje + '%';
+         * 
+         * 5. Función calcularEdad(fechaNacimiento):
+         *    Calcula la edad comparando con la fecha actual.
+         * 
+         * 6. Función validarFormulario() (para el submit):
+         *    - Ejecuta cada validación individual y muestra error con SweetAlert2 si alguna falla.
+         *    - Verifica mayoría de edad (calcularEdad >= 18).
+         *    - Verifica que el archivo de foto sea imagen (type.startsWith('image/')).
+         *    - Si todo ok, retorna true.
+         * 
+         * 7. Manejador de submit:
+         *    event.preventDefault();
+         *    if (!validarFormulario()) return;
+         *    Swal.fire({ title: '¡Registro exitoso!', html: '...', icon: 'success', ... });
+         *    (Opcional: enviar datos por fetch)
+         * 
+         * 8. Asignar eventos:
+         *    - inputs.nombre.addEventListener('input', actualizarBarraProgreso);
+         *    - (similar para todos los campos)
+         *    - inputs.foto.addEventListener('change', mostrarNombreArchivo);
+         *    - form.addEventListener('submit', manejarSubmit);
+         * 
+         * 9. Inicializar barra al cargar la página:
+         *    window.addEventListener('DOMContentLoaded', actualizarBarraProgreso);
+         * 
+         * -------------------------------------------------------------------------
+         * EJEMPLO DE USO DE SWEETALERT2 PARA ERRORES
+         * -------------------------------------------------------------------------
+         * 
+         * if (!esNombreApellidoValido(inputs.nombre.value)) {
+         *     Swal.fire('Nombre inválido', 'Debe tener entre 2 y 50 letras.', 'warning');
+         *     return false;
+         * }
+         * 
+         * -------------------------------------------------------------------------
+         * NOTAS ADICIONALES
+         * -------------------------------------------------------------------------
+         * 
+         * - La barra de progreso refleja el cumplimiento de las validaciones de cada campo,
+         *   excluyendo la edad (que se valida aparte en el submit).
+         * - El campo de fecha se considera "completado" si tiene un valor, aunque la edad
+         *   sea inválida; esto permite que la barra avance mientras el usuario escribe.
+         * - Se recomienda mostrar el nombre del archivo seleccionado en el campo de foto
+         *   para mejorar la experiencia de usuario.
+         * 
+         * =========================================================================
+         */
+
+        // Aquí iría todo el código JavaScript descrito anteriormente.
+        // Por ejemplo:
+
+        /*
+        (function() {
+            // Referencias
+            const form = document.getElementById('registrationForm');
+            const inputs = {
+                nombre: document.getElementById('nombre'),
+                primerApellido: document.getElementById('primerApellido'),
+                segundoApellido: document.getElementById('segundoApellido'),
+                email: document.getElementById('email'),
+                fechaNacimiento: document.getElementById('fechaNacimiento'),
+                clave: document.getElementById('clave'),
+                foto: document.getElementById('foto')
+            };
+            const progressBar = document.getElementById('progressBar');
+
+            // Expresiones regulares
+            const regexNombreApellido = /^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]{2,50}$/;
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const regexClave = /^(?=(.*[A-Z]){1,})(?=(.*[A-Za-z]){3,})(?=(.*\d){5,})(?=(.*[!@#$%^&*]){2,}).{11,}$/;
+
+            // Funciones de validación...
+            // ...
+
+            // Eventos...
+            // ...
+        })();
+        */
+    </script>
+</body>
+</html>
